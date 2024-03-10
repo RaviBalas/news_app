@@ -1,8 +1,13 @@
-# Getting Started with Create React App
+# Getting Started with News.com
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+generate  your api key from [newsapi.org](https://newsapi.org/) and set your env variable:
+
+
+### `REACT_APP_API_KEY=<your key>`
+
 
 In the project directory, you can run:
 

@@ -1,7 +1,7 @@
 
 import './App.css';
 
-import React, { Component, useState } from 'react'
+import React, {useState } from 'react'
 import Navbar from './componants/Navbar';
 import News from './componants/News';
 import NewsInfinteScrollCompnant from './componants/NewsInfineScrollComp';
@@ -12,43 +12,37 @@ import {
 } from "react-router-dom";
 import LoadingBar from 'react-top-loading-bar'
 
-
-
-export default class App extends Component {
-  state = {
-    progress: 100,
-    apiKey: process.env.REACT_APP_API_KEY
-  }
-
-  setProgress = (progress) => {
-    this.progress = progress    
-  }
-  render() {
-    document.body.style.background = "grey";
-    // console.log("this.state.apiKey", this.state.apiKey)
-    // const [progress, setProgress] =useState(0)
+const App = () => {    
+  const page_size=25
+  document.body.style.background = "grey";
+    
+  const apiKey= process.env.REACT_APP_API_KEY
+  const [progress, setProgress]= useState(100)    
     return (
       <>
 
         <LoadingBar
           color='#f11946'
           height={3}
-          progress={this.state.progress}
+          progress={progress}
         // onLoaderFinished={() => setProgress(0)}
         />
         <Router>
           <Navbar />
           <Routes>
-            <Route path="" element={<NewsInfinteScrollCompnant setProgress={this.setProgress} pagesize="5" country="in" category="general" key="general" apiKey={this.state.apiKey} />} />
-            <Route path="business" element={<News pagesize="50" country="in" category="business" key="business" apiKey={this.state.apiKey} />} />
-            <Route path="entertainment" element={<News pagesize="5" country="in" category="entertainment" key="entertainment" apiKey={this.state.apiKey} />} />
-            <Route path="health" element={<News pagesize="5" country="in" category="health" key="health" apiKey={this.state.apiKey} />} />
-            <Route path="science" element={<News pagesize="5" country="in" category="science" key="science" apiKey={this.state.apiKey} />} />
-            <Route path="sports" element={<News pagesize="5" country="in" category="sports" key="sports" apiKey={this.state.apiKey} />} />
-            <Route path="technology" element={<News pagesize="5" country="in" category="technology" key="technology" apiKey={this.state.apiKey} />} />
+            <Route path="" element={<NewsInfinteScrollCompnant setProgress={setProgress} pagesize={page_size} country="in" category="general" key="general" apiKey={apiKey} />} />
+            <Route path="business" element={<News pagesize="50" country="in" category="business" key="business" apiKey={apiKey} />} />
+            <Route path="entertainment" element={<News pagesize={page_size} country="in" category="entertainment" key="entertainment" apiKey={apiKey} />} />
+            <Route path="health" element={<News pagesize={page_size} country="in" category="health" key="health" apiKey={apiKey} />} />
+            <Route path="science" element={<News pagesize={page_size} country="in" category="science" key="science" apiKey={apiKey} />} />
+            <Route path="sports" element={<News pagesize={page_size} country="in" category="sports" key="sports" apiKey={apiKey} />} />
+            <Route path="technology" element={<News pagesize={page_size} country="in" category="technology" key="technology" apiKey={apiKey} />} />
           </Routes>
         </Router>
       </>
     )
-  }
+  
 }
+
+
+export default App;

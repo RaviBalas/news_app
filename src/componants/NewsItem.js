@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class NewsItem extends Component {
- 
-    render() {
+export default function NewsItem(props) {
 
-        let { title, description, imageUrl, newsUrl,publishedAt,author,source } = this.props
-        return (<><div className="card my-2" style={{ backgroundColor: "#dad2d2" }}>
+        let { title, description, imageUrl, newsUrl,publishedAt,author,source } = props
+        return (
+        <><div className="card my-2" style={{ backgroundColor: "#dad2d2" }}>
                      <span className="position-absolute top-0  translate-middle badge rounded-pill bg-danger" style={{zIndex:1,left:"90%"}}>{source}</span>
                     <img src={imageUrl} className="card-img-top" alt={imageUrl} />
                     
@@ -19,6 +18,3 @@ export default class NewsItem extends Component {
             </>
         )
     }
-}
-
-
